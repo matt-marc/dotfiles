@@ -50,7 +50,7 @@ nnoremap E $
 nnoremap $ <nop>
 nnoremap ^ <nop>
 
-" this highlights text
+" this highlights text that was just inserted
 nnoremap gV `[v`]
 
 "split navigations
@@ -58,6 +58,11 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+execute "set <M-j>=^[j"
+execute "set <M-k>=^[k"
+
+" todo movement of text nnoremap <M-j> <Esc>
 
 " Enable folding
 set foldmethod=indent
