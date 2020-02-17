@@ -1,0 +1,50 @@
+ # Function to parse current git branch
+ parse_git_branch() {
+      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+ }
+
+set -o vi
+
+ # Sets the max depth shown for directories to 2
+ PROMPT_DIRTRIM=2
+
+
+ # configures termnal output to look nicer and show parsed git branch
+ export PS1="\[\033[35m\]\u \[\033[32m\][\w]\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
+
+ # bash alias for configuration of profile
+ alias src='source ~/.bashrc' # src to quickly resource bash env
+ alias editprofile='vim ~/.bash_matt' # conf to quickly open bash configuration
+ alias conf='vim ~/.bash_marchi'
+ alias editvim='vim ~/.vimrc'
+
+ alias cc='clear'
+ alias runmake='make clean && make && ./main'
+ alias ll='ls -la'
+
+ alias retmux='tmux attach-session'
+
+
+ alias gmsh='/opt/gmsh-4.5.2-Linux64/bin/gmsh'
+
+ # some git functions
+ alias watch-git='watch git status -s'
+
+
+
+
+ # project shortcuts
+ alias goval='ssh matt@valhalla.genie.uottawa.ca'
+ alias gocode='cd ~/research/masters/ && ls '
+ alias gohw='cd ~/homework/'
+
+
+ # jump around
+ alias ..='cd ..'
+ alias ...='cd ../..'
+ alias ....='cd ../../..'
+ alias .....='cd ../../../..'
+
+ getAlias(){
+ echo "watch-git" 'alias watch-git'
+ }
