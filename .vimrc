@@ -53,22 +53,34 @@ nnoremap ^ <nop>
 " this highlights text that was just inserted
 nnoremap gV `[v`]
 
+" Why escape so far
+nmap <c-c> <esc>
+imap <c-c> <esc>
+vmap <c-c> <esc>
+omap <c-c> <esc>
+
 "split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-execute "set <M-j>=^[j"
-execute "set <M-k>=^[k"
+execute "set <M-j>=\ej"
+execute "set <M-k>=\ek"
 
-" todo movement of text nnoremap <M-j> <Esc>
+" moving lines around in all modes
+nnoremap <M-j> :m .+1<CR>==
+nnoremap <M-k> :m .-2<CR>==
+
+inoremap <C-j> <ESC>:m .+1<CR>==gi
+inoremap <C-k> <ESC>:m .-2<CR>==gi
+
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
-
-
 
 set nocompatible
 filetype off
