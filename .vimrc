@@ -38,9 +38,10 @@ filetype indent on
 set autoindent
 
 " Mapping
-nnoremap <F3> :nohlsearch<CR>
 nnoremap <F2> :NERDTreeToggle<CR>
+nnoremap <F3> :nohlsearch<CR>
 nnoremap <F4> :TagbarToggle<CR>
+nnoremap <F5> :GitGutterToggle<CR>
 
 " better nav
 nnoremap B ^
@@ -94,5 +95,6 @@ Plugin 'morhetz/gruvbox'
 Plugin 'frazrepo/vim-rainbow'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-surround'
+Plugin 'airblade/vim-gitgutter'
 call vundle#end()
 filetype plugin indent on

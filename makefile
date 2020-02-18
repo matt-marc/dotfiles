@@ -5,6 +5,8 @@ msg:
 		@echo "make update to put new dotfiles in version control"
 
 install:
+		git fetch
+		git pull
 		cp .vimrc ../
 		cp .bash_marchi ../
 
