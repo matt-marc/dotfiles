@@ -30,7 +30,9 @@ set showmatch
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 
+" Vim start up
 let g:rainbow_active = 1 " sets rainbow brackets
+let g:gitgutter_enabled = 0 " disable git gutter default
 
 highlight RedundantSpaces ctermbg=red guibg=red
 match RedundantSpaces /\s\+$/
