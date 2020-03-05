@@ -41,10 +41,10 @@ filetype indent on
 set autoindent
 
 " Mapping
+nnoremap <F1> :setlocal spell! spelllang=en_ca<CR>
 nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <F3> :nohlsearch<CR>
 nnoremap <F4> :TagbarToggle<CR>
-nnoremap <F1> :setlocal spell! spelllang=en_ca<CR>
 
 " better nav
 nnoremap B ^
