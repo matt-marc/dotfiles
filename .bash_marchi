@@ -21,6 +21,7 @@ set -o vi
  alias cc='clear'
  alias runmake='make clean && make && ./main'
  alias ll='ls -la'
+ alias run='make -j3 && clear && ./Electric_Mayhem'
 
  alias retmux='tmux attach-session'
 

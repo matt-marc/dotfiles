@@ -7,6 +7,7 @@
 syntax enable
 syntax on
 
+let g:gruvbox_guisp_fallback = "bg"
 colorscheme gruvbox
 set background=dark
 
@@ -29,6 +30,8 @@ set showmatch
 
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
+
+"set spell spelllang=en_ca
 
 " Vim start up
 let g:rainbow_active = 1 " sets rainbow brackets
@@ -98,5 +101,8 @@ Plugin 'frazrepo/vim-rainbow'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-surround'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'lervag/vimtex'
+Plugin 'xuhdev/vim-latex-live-preview'
 call vundle#end()
 filetype plugin indent on
