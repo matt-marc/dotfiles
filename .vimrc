@@ -7,6 +7,11 @@
 syntax enable
 syntax on
 
+" Creates backup for vim files
+set backupdir=.backup/,~/.backup/,/tmp//
+set directory=.swp/,~/.swp/,/tmp//
+set undodir=.undo/,~/.undo/,/tmp//
+
 let g:gruvbox_guisp_fallback = "bg"
 colorscheme gruvbox
 set background=dark
@@ -31,6 +36,10 @@ set showmatch
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+
 " Vim start up
 let g:rainbow_active = 1 " sets rainbow brackets
 let g:gitgutter_enabled = 0 " disable git gutter default
@@ -38,6 +47,7 @@ let g:gitgutter_enabled = 0 " disable git gutter default
 highlight RedundantSpaces ctermbg=red guibg=red
 match RedundantSpaces /\s\+$/
 filetype indent on
+
 set autoindent
 
 " Mapping
@@ -82,9 +92,9 @@ inoremap <C-k> <ESC>:m .-2<CR>==gi
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
-" Enable folding
-set foldmethod=indent
-set foldlevel=99
+
+" latex
+let g:livepreview_cursorhold_recompile = 0 "Disables recompile during cursor pause
 
 set nocompatible
 filetype off
