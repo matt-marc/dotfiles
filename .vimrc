@@ -31,8 +31,6 @@ set showmatch
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 
-"set spell spelllang=en_ca
-
 " Vim start up
 let g:rainbow_active = 1 " sets rainbow brackets
 let g:gitgutter_enabled = 0 " disable git gutter default
@@ -46,7 +44,7 @@ set autoindent
 nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <F3> :nohlsearch<CR>
 nnoremap <F4> :TagbarToggle<CR>
-nnoremap <F5> :GitGutterToggle<CR>
+nnoremap <F1> :setlocal spell! spelllang=en_ca<CR>
 
 " better nav
 nnoremap B ^
