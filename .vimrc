@@ -7,6 +7,8 @@
 syntax enable
 syntax on
 
+filetype plugin indent on
+
 " Creates backup for vim files
 set backupdir=.backup/,~/.backup/,/tmp//
 set directory=.swp/,~/.swp/,/tmp//
