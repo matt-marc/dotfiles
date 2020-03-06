@@ -92,9 +92,15 @@ inoremap <C-k> <ESC>:m .-2<CR>==gi
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
+" snipets stuff
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " latex
 let g:livepreview_cursorhold_recompile = 0 "Disables recompile during cursor pause
+set conceallevel=1
+let g:tex_conceal='abdmg'
 
 set nocompatible
 filetype off
@@ -112,5 +118,6 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'lervag/vimtex'
 Plugin 'xuhdev/vim-latex-live-preview'
+Plugin 'SirVer/ultisnips'
 call vundle#end()
 filetype plugin indent on
