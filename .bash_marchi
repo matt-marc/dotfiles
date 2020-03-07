@@ -10,7 +10,7 @@ set -o vi
 
 
  # configures termnal output to look nicer and show parsed git branch
- export PS1="\[\033[35m\]\u \[\033[32m\][\w]\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
+ export PS1="\[\033[38;5;200m\]\u \[\033[38;5;46m\][\w]\[\033[38;5;11m\]\$(parse_git_branch)\[\033[00m\] $ "
 
  # bash alias for configuration of profile
  alias src='source ~/.bashrc' # src to quickly resource bash env
