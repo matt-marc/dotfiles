@@ -12,16 +12,11 @@ msg:
 		@echo -e "\n\n"
 
 install:
-		git fetch
-		git pull
 		cp .vimrc ../
 		cp .bash_marchi ../
-		cp ./UltiSnips/* ../
+		cp ./UltiSnips/* ../.vim/UltiSnips/
 
 update:
 		cp ~/.vimrc .
 		cp ~/.bash_marchi .
 		cp ~/.vim/UltiSnips/* ./UltiSnips
-		git add -A
-		git commit -m "Updates dot files"
-		git push
