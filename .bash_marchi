@@ -1,51 +1,79 @@
- # Function to parse current git branch
- parse_git_branch() {
-      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
- }
 
 set -o vi
 
- # Sets the max depth shown for directories to 2
- PROMPT_DIRTRIM=2
+
+# bash alias for configuration of profile
+alias src='source ~/.bashrc' # src to quickly resource bash env
+alias editprofile='vim ~/.bash_matt' # conf to quickly open bash configuration
+alias conf='vim ~/.bash_marchi'
+alias editvim='vim ~/.vimrc'
+
+alias cc='clear'
+alias runmake='make clean && make && ./main'
+alias ll='ls -la'
+alias run='make -j3 && clear && ./Electric_Mayhem'
+
+alias retmux='tmux attach-session'
 
 
- # configures termnal output to look nicer and show parsed git branch
- export PS1="\[\033[38;5;200m\]\u \[\033[38;5;46m\][\w]\[\033[38;5;11m\]\$(parse_git_branch)\[\033[00m\] $ "
+alias gmsh='/opt/gmsh-4.5.2-Linux64/bin/gmsh'
 
- # bash alias for configuration of profile
- alias src='source ~/.bashrc' # src to quickly resource bash env
- alias editprofile='vim ~/.bash_matt' # conf to quickly open bash configuration
- alias conf='vim ~/.bash_marchi'
- alias editvim='vim ~/.vimrc'
-
- alias cc='clear'
- alias runmake='make clean && make && ./main'
- alias ll='ls -la'
- alias run='make -j3 && clear && ./Electric_Mayhem'
-
- alias retmux='tmux attach-session'
-
-
- alias gmsh='/opt/gmsh-4.5.2-Linux64/bin/gmsh'
-
- # some git functions
- alias watch-git='watch git status -s'
+# some git functions
+alias watch-git='watch git status -s'
 
 
 
 
- # project shortcuts
- alias goval='ssh matt@valhalla.genie.uottawa.ca'
- alias gocode='cd ~/research/masters/ && ls '
- alias gohw='cd ~/homework/'
+# project shortcuts
+alias goval='ssh matt@valhalla.genie.uottawa.ca'
+alias gocode='cd ~/research/masters/ && ls '
+alias gohw='cd ~/homework/'
 
+# jump around
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
 
- # jump around
- alias ..='cd ..'
- alias ...='cd ../..'
- alias ....='cd ../../..'
- alias .....='cd ../../../..'
+getAlias(){
+echo "watch-git" 'alias watch-git'
+}
 
- getAlias(){
- echo "watch-git" 'alias watch-git'
- }
+# Function to parse current git branch
+#
+git_prompt() {
+    local branch=$(parse_git_branch)
+    # Empty output? Then we're not in a Git repository, so bypass the rest
+    # of the function, producing no output
+    if [[ -n $branch ]]; then
+        echo -e "(${branch}$(git_status))"
+    fi
+
+}
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+}
+
+git_status() {
+    # Outputs a series of indicators based on the status of the
+    # working directory:
+    # + changes are staged and ready to commit
+    # ! unstaged changes are present
+    # ? untracked files are present
+    # S changes have been stashed
+    # P local commits need to be pushed to the remote
+    local status="$(git status --porcelain 2> /dev/null)"
+    local output=''
+    [[ -n $(egrep '^[MADRC]' <<<"$status") ]] && output="$output+"
+    [[ -n $(egrep '^.[MD]' <<<"$status") ]] && output="$output!"
+    [[ -n $(egrep '^\?\?' <<<"$status") ]] && output="$output?"
+    [[ -n $(git log --branches --not --remotes 2> /dev/null) ]] && output="${output}P"
+    [[ -n $output ]] && output="|$output"  # separate from branch name
+    echo $output
+}
+
+# Sets the max depth shown for directories to 2
+PROMPT_DIRTRIM=2
+
+# configures termnal output to look nicer and show parsed git branch
+export PS1="\[\033[38;5;200m\]\u \[\033[38;5;46m\][\w]\[\033[38;5;11m\] \$(git_prompt) \[\033[00m\] $ "
