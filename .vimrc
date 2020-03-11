@@ -15,6 +15,7 @@ set directory=.swp/,~/.swp/,/tmp//
 set undodir=.undo/,~/.undo/,/tmp//
 
 let g:gruvbox_guisp_fallback = "bg"
+let g:gruvbox_color_column = "aqua"
 colorscheme gruvbox
 set background=dark
 
@@ -41,6 +42,7 @@ set hlsearch            " highlight matches
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
+set colorcolumn=80
 
 " Vim start up
 let g:rainbow_active = 1 " sets rainbow brackets
