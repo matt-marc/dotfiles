@@ -42,7 +42,7 @@ set hlsearch            " highlight matches
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
-set colorcolumn=80
+set colorcolumn=120
 
 " Vim start up
 let g:rainbow_active = 1 " sets rainbow brackets
