@@ -21,6 +21,9 @@ alias gmsh='/opt/gmsh-4.5.2-Linux64/bin/gmsh'
 # some git functions
 alias watch-git='watch git status -s'
 
+# remove all BLAWB test
+alias dis-test="sed -i 's/BLAWB_TEST\(.*\)ON$/BLAWB_TEST\1OFF/' CMakeCache.txt"
+alias en-test="sed -i 's/BLAWB_TEST\(.*\)OFF$/BLAWB_TEST\1ON/' CMakeCache.txt"
 
 
 
