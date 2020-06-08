@@ -9,38 +9,22 @@ alias conf='vim ~/.bash_marchi'
 alias editvim='vim ~/.vimrc'
 
 alias cc='clear'
-alias runmake='make clean && make && ./main'
 alias ll='ls -la'
-alias run='make -j3 && clear && ./Electric_Mayhem'
-
-alias retmux='tmux attach-session'
-
 
 alias gmsh='/opt/gmsh-4.5.2-Linux64/bin/gmsh'
-
-# some git functions
-alias watch-git='watch git status -s'
 
 # remove all BLAWB test
 alias dis-test="sed -i 's/BLAWB_TEST\(.*\)ON$/BLAWB_TEST\1OFF/' CMakeCache.txt"
 alias en-test="sed -i 's/BLAWB_TEST\(.*\)OFF$/BLAWB_TEST\1ON/' CMakeCache.txt"
 
-
-
 # project shortcuts
-alias goval='ssh matt@valhalla.genie.uottawa.ca'
-alias gocode='cd ~/research/masters/ && ls '
-alias gohw='cd ~/homework/'
+alias goval='ssh valhalla'
 
 # jump around
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
-
-getAlias(){
-echo "watch-git" 'alias watch-git'
-}
 
 # Function to parse current git branch
 #
