@@ -53,7 +53,7 @@ $0
 endsnippet
 
 snippet mk "Math" wA
-$${1}$ $0
+$${1}$$0
 endsnippet
 
 context "math()"
@@ -65,8 +65,7 @@ context "math()"
 snippet bmat "Bmatrix" iA
 \\begin{bmatrix}
 $1
-\\end{bmatrix}
-$0
+\\end{bmatrix}$0
 endsnippet
 
 context "math()"
@@ -96,4 +95,72 @@ endsnippet
 context "math()"
 snippet tt "text" iA
 \text{$1}$0
+endsnippet
+
+snippet mg "moment gen" b
+\[
+	\frac{\partial }{\partial t} \langle  ${1:\omega} F \rangle + \frac{\partial }{\partial x_k} \langle v_k ${2:\omega} F \rangle = S
+\]
+$0
+endsnippet
+
+snippet momsol "moment gen" b
+\[
+	\frac{\partial }{\partial t}   ${1}  \Big[ ${2} \Big] +
+	\frac{\partial }{\partial x_k} ${3}  \Big[ ${4} \Big] = S_{${5}}
+\]
+$0
+endsnippet
+
+snippet maxwell "moment gen" b
+\[
+	F = \frac{n}{(2 \pi)^\frac{4}{2} (det (\Psi_{ij})\frac{1}{2}}
+	\exp
+	\Big[
+	\frac{1}{2} \Psi_{ij}^{-1} c_i c_j
+	\Big]
+\]
+$0
+endsnippet
+
+snippet mom1 "moment gen" b
+\[
+	\frac{\partial }{\partial t} \langle  F \rangle + \frac{\partial }{\partial x_k} \langle v_k F \rangle = S_1
+\]
+$0
+endsnippet
+
+snippet mom2 "moment gen" b
+\[
+	\frac{\partial }{\partial t} \langle v_i F \rangle + \frac{\partial }{\partial x_k} \langle v_k v_i F \rangle = S_2
+\]
+$0
+endsnippet
+
+snippet mom3 "moment gen" b
+\[
+	\frac{\partial }{\partial t} \langle v_i v_j F \rangle + \frac{\partial }{\partial x_k} \langle v_k v_i v_j F \rangle = S_3
+\]
+$0
+endsnippet
+
+snippet mom4 "moment gen" b
+\[
+	\frac{\partial }{\partial t} \langle d_l F \rangle + \frac{\partial }{\partial x_k} \langle v_k d_l F \rangle = S_4
+\]
+$0
+endsnippet
+
+snippet mom5 "moment gen" b
+\[
+	\frac{\partial }{\partial t} \langle d_l v_i F \rangle + \frac{\partial }{\partial x_k} \langle v_k d_l v_i F \rangle = S_5
+\]
+$0
+endsnippet
+
+snippet mom6 "moment gen" b
+\[
+	\frac{\partial }{\partial t} \langle d_l^2 F \rangle + \frac{\partial }{\partial x_k} \langle v_k d_l^2 F \rangle = S_5
+\]
+$0
 endsnippet

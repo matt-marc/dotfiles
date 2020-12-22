@@ -19,6 +19,7 @@ alias en-test="sed -i 's/BLAWB_TEST\(.*\)OFF$/BLAWB_TEST\1ON/' CMakeCache.txt"
 
 # project shortcuts
 alias goval='ssh valhalla'
+alias gobuild='cd ~/BLawB/build/'
 
 # jump around
 alias ..='cd ..'
@@ -64,3 +65,22 @@ PROMPT_DIRTRIM=2
 
 # configures termnal output to look nicer and show parsed git branch
 export PS1="\[\033[38;5;200m\]\u \[\033[38;5;46m\][\w]\[\033[38;5;11m\] \$(git_prompt) \[\033[00m\] $ "
+
+
+# rm function for files
+rm_check() {
+    ls *.dat *.vtk *.log 2>/dev/null
+    read -p "are you sure you want to delete the files? Y/N " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]];  then
+        find -name '*.dat' -print -delete
+        find -name '*.vtk' -print -delete
+        find -name '*.log' -print -delete
+        echo "all those files have been deleted............."
+    fi
+}
+
+module load mpi/openmpi-x86_64
+
+
+alias rmdata='rm_check'

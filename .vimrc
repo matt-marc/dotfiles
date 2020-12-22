@@ -14,20 +14,15 @@ set backupdir=.backup/,~/.backup/,/tmp//
 set directory=.swp/,~/.swp/,/tmp//
 set undodir=.undo/,~/.undo/,/tmp//
 
-packadd! dracula
-syntax enable
-colorscheme dracula
-"let g:gruvbox_guisp_fallback = "bg"
-"let g:gruvbox_color_column = "aqua"
-"colorscheme gruvbox
-set background=dark
-
 let mapleader=","       " leader is comma
 set noswapfile
 
 set tabstop=4
 set softtabstop=4
 set expandtab
+set smartindent
+set autoindent
+filetype indent on
 
 set number
 set relativenumber
@@ -36,11 +31,10 @@ set cursorline
 
 set wildmenu
 
-set lazyredraw
+"set lazyredraw
 set showmatch
 
 set incsearch           " search as characters are entered
-set hlsearch            " highlight matches
 
 " Enable folding
 set foldmethod=indent
@@ -53,15 +47,17 @@ let g:gitgutter_enabled = 0 " disable git gutter default
 
 highlight RedundantSpaces ctermbg=red guibg=red
 match RedundantSpaces /\s\+$/
-filetype indent on
 
-set autoindent
+let NERDTreeIgnore=['\.o$', '\~$','\.pyc']
+
 
 " Mapping
 nnoremap <F1> :setlocal spell! spelllang=en_ca<CR>
 nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <F3> :nohlsearch<CR>
 nnoremap <F4> :TagbarToggle<CR>
+nnoremap <F5> :! make <CR>
+nnoremap <F6> :execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : "")<CR>
 
 " better nav
 nnoremap B ^
@@ -105,6 +101,7 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " latex
+let g:tex_flavor='latex'
 let g:livepreview_cursorhold_recompile = 0 "Disables recompile during cursor pause
 let g:vimtex_view_method='zathura'
 set conceallevel=1
@@ -112,25 +109,34 @@ let g:tex_conceal='abdmg'
 
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'vim-airline/vim-airline'
-Plugin 'morhetz/gruvbox'
-Plugin 'frazrepo/vim-rainbow'
-Plugin 'majutsushi/tagbar'
-Plugin 'tpope/vim-surround'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'lervag/vimtex'
-Plugin 'xuhdev/vim-latex-live-preview'
-Plugin 'SirVer/ultisnips'
-Plugin 'google/vim-maktaba'
-Plugin 'google/vim-codefmt'
-" Also add Glaive, which is used to configure codefmt's maktaba flags. See
-" `:help :Glaive` for usage.
-Plugin 'google/vim-glaive'
-call vundle#end()
 filetype plugin indent on
+
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdtree'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'vim-airline/vim-airline'
+Plug 'morhetz/gruvbox'
+Plug 'frazrepo/vim-rainbow'
+Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-surround'
+Plug 'airblade/vim-gitgutter'
+Plug 'davidhalter/jedi-vim', { 'for': 'python'}
+Plug 'lervag/vimtex'
+Plug 'xuhdev/vim-latex-live-preview'
+Plug 'SirVer/ultisnips'
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
+Plug 'drewtempelmeyer/palenight.vim'
+call plug#end()
+
+
+set background=dark
+let g:gruvbox_guisp_fallback = "bg"
+colorscheme gruvbox
+let g:airline_theme = "gruvbox"
+
+
+highlight RedundantSpaces ctermbg=red guibg=red
+match RedundantSpaces /\s\+$/
