@@ -45,8 +45,7 @@ set foldlevel=99
 let g:rainbow_active = 1 " sets rainbow brackets
 let g:gitgutter_enabled = 0 " disable git gutter default
 
-highlight RedundantSpaces ctermbg=red guibg=red
-match RedundantSpaces /\s\+$/
+au FileType c,cpp,objc,objcpp call rainbow#load()
 
 let NERDTreeIgnore=['\.o$', '\~$','\.pyc']
 
@@ -55,7 +54,6 @@ let NERDTreeIgnore=['\.o$', '\~$','\.pyc']
 nnoremap <F1> :setlocal spell! spelllang=en_ca<CR>
 nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <F3> :nohlsearch<CR>
-nnoremap <F4> :TagbarToggle<CR>
 nnoremap <F5> :! make <CR>
 nnoremap <F6> :execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : "")<CR>
 
@@ -112,31 +110,31 @@ filetype off
 filetype plugin indent on
 
 call plug#begin('~/.vim/plugged')
+Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdtree'
-Plug 'drewtempelmeyer/palenight.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-airline/vim-airline'
-Plug 'morhetz/gruvbox'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'frazrepo/vim-rainbow'
-Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'davidhalter/jedi-vim', { 'for': 'python'}
 Plug 'lervag/vimtex'
-Plug 'xuhdev/vim-latex-live-preview'
 Plug 'SirVer/ultisnips'
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
-Plug 'drewtempelmeyer/palenight.vim'
 call plug#end()
 
-
 set background=dark
-let g:gruvbox_guisp_fallback = "bg"
-colorscheme gruvbox
-let g:airline_theme = "gruvbox"
+if exists('+termguicolors')
+        let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+        let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+        set termguicolors
+endif
 
+colorscheme onehalfdark
+let g:airline_theme = 'onehalfdark'
 
 highlight RedundantSpaces ctermbg=red guibg=red
 match RedundantSpaces /\s\+$/
