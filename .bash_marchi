@@ -19,7 +19,13 @@ alias en-test="sed -i 's/BLAWB_TEST\(.*\)OFF$/BLAWB_TEST\1ON/' CMakeCache.txt"
 
 # project shortcuts
 alias goval='ssh valhalla'
-alias gobuild='cd ~/BLawB/build/'
+alias goblawb='cd ~/BLawB/src/'
+alias gofrancois='cd ~/BLawB/src/PGM/ && vim PGM3D_Conserved.h'
+alias gopgm='cd ~/BLawB/src/PGM_SW/ && vim PGM_SW.h'
+alias gopv='cd ~/BLawB/src/PGM_PV/ && vim PGM_PV.h'
+alias gojcp='cd ~/JCP_mathieu_2020/src/'
+alias gopaper='cd ~/JCP_mathieu_2020/report/'
+alias gonotes='cd ~/JCP_mathieu_2020/notes/'
 
 # jump around
 alias ..='cd ..'
@@ -69,18 +75,30 @@ export PS1="\[\033[38;5;200m\]\u \[\033[38;5;46m\][\w]\[\033[38;5;11m\] \$(git_p
 
 # rm function for files
 rm_check() {
-    ls *.dat *.vtk *.log 2>/dev/null
+    echo "FILES TO BE DELETED"
+    echo
+    ls *.dat *.vtk *.vts *.vtm *.csv 2>/dev/null
     read -p "are you sure you want to delete the files? Y/N " -n 1 -r
     echo
     if [[ $REPLY =~ ^[Yy]$ ]];  then
         find -name '*.dat' -print -delete
+        find -name '*.csv' -print -delete
         find -name '*.vtk' -print -delete
-        find -name '*.log' -print -delete
+        find -name '*.vts' -print -delete
+        find -name '*.vtm' -print -delete
         echo "all those files have been deleted............."
     fi
 }
 
+mk_ffmpeg(){
+    NAME="$1"
+    ffmpeg -r 60 -s 1920x1080 -i $NAME.%04d.png -vcodec libx264 -crf 25  -pix_fmt yuv420p $NAME.mp4
+}
+
+alias mkffmpeg='mk_ffmpeg'
+
+
 module load mpi/openmpi-x86_64
 
-
 alias rmdata='rm_check'
+alias mkmovie='mk_ffmpeg'
