@@ -47,6 +47,9 @@ set directory=.swp/,~/.swp/,/tmp//
 set undodir=.undo/,~/.undo/,/tmp//
 set noswapfile
 
+"Leader is comma
+let mapleader=","
+
 "Load last location
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
@@ -54,12 +57,13 @@ endif
 
 "FZF configs
 nnoremap <C-p> :GFiles<CR>
+nnoremap <leader>/ :BLines<CR>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit'
   \}
-"let $FZF_DEFAULT_COMMAND = 'ag -g '
+let $FZF_DEFAULT_COMMAND = 'ag -g '
 
 "FMT settings
 let g:deoplete#enable_at_startup = 1
@@ -78,8 +82,6 @@ syntax on
 "Load colour brackets in cpp files
 au BufEnter *.tpp :setlocal filetype=cpp
 
-"Leader is comma
-let mapleader=","
 
 set tabstop=4
 set softtabstop=4
@@ -139,12 +141,16 @@ vnoremap <leader>d "_d
 vnoremap <leader>p "_dP
 
 "substitute all occurrences of the word under the cursor:
-nnoremap <Leader>f :%s/\<<C-r><C-w>\>/
+nnoremap <leader>f :%s/\<<C-r><C-w>\>/
 
 "This highlights text that was just inserted
 nnoremap gV `[v`]
 
 
+"Snipets stuff
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 "Latex
 let g:tex_flavor='latex'
