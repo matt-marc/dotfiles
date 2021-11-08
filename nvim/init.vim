@@ -33,6 +33,7 @@ Plug 'glepnir/oceanic-material'
 Plug 'mhartington/oceanic-next'
 Plug 'frazrepo/vim-rainbow'
 Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 "Code fmt
 Plug 'rhysd/vim-clang-format'
@@ -111,14 +112,12 @@ if exists('+termguicolors')
         set termguicolors
 endif
 
-colorscheme jellybeans
+"colorscheme jellybeans
+colorscheme dracula
 let g:airline_theme='jellybeans'
 highlight RedundantSpaces ctermbg=red guibg=red
 match RedundantSpaces /\s\+$/
 let g:rainbow_active = 1 " sets rainbow brackets
-
-"Load colour brackets in cpp files
-au BufEnter *.tpp :setlocal filetype=cpp
 
 
 "Mapping
@@ -140,6 +139,11 @@ vnoremap <leader>d "_d
 "Without yanking it
 vnoremap <leader>p "_dP
 
+"folds
+"set foldmethod=indent
+"nnoremap <space> za
+"vnoremap <space> zf
+
 "substitute all occurrences of the word under the cursor:
 nnoremap <leader>f :%s/\<<C-r><C-w>\>/
 
@@ -147,6 +151,11 @@ nnoremap <leader>f :%s/\<<C-r><C-w>\>/
 nnoremap gV `[v`]
 
 
+"Snipets stuff
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips']
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 "Latex
 let g:tex_flavor='latex'
