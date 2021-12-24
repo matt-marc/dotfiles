@@ -43,9 +43,9 @@ Plug 'google/vim-glaive'
 call plug#end()
 
 "Creates backup for vim files
-set backupdir=.backup/,~/.backup/,/tmp//
-set directory=.swp/,~/.swp/,/tmp//
-set undodir=.undo/,~/.undo/,/tmp//
+set backupdir=~/.backup/,/tmp//
+set directory=~/.swp/,/tmp//
+set undodir=~/.undo/,/tmp//
 set noswapfile
 
 "Leader is comma
